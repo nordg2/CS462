@@ -17,7 +17,7 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            
+            echo $_POST[code];
         ?>
         
         <div class="navbar">
