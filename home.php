@@ -76,9 +76,9 @@
                             } else if($_POST[userSelected] == null || strcmp($_POST[userSelected], "*") == 0) {
                                echo"Select a User";
                                echo "<a href='https://foursquare.com/oauth2/authenticate
-    ?client_id=O3ON1U1KI14HA0SENG424W4JHY0KNIMC1RREPLBRNAJF41TI
+    ?client_id=TVNJ0HMXZU2MRZB4QBL5SIO14TQVBNZUOZXRCLZNWQ20ESLR
     &response_type=POST
-    &redirect_uri=https://localhost:80/CS462/home.php'>SignIn with Foursquare</a>";
+    &redirect_uri=http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php'>SignIn with Foursquare</a>";
                             } else {
                                echo"This is not your page!"; 
                             }

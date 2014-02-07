@@ -4,12 +4,12 @@
     $users = json_decode($string);
     $found = false;
     foreach($users as $user1) {
-        if(strcmp($user1->name, $_POST[registerName]) == 0) {
+        if(strcmp($user1->name, $_POST[signInName]) == 0) {
             $found = true;
         }
     }
     if(!$found) {
-        die('Error: you must have an account to register');
+        die('Error: you must have an account to sign-in');
     }
     $user = array();
     array_push($user, $_POST[signInName]);
