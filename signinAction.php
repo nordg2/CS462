@@ -3,7 +3,9 @@
     $string = file_get_contents('users.txt');
     $users = json_decode($string);
     $found = false;
+    echo print_r($users);
     foreach($users as $user1) {
+        
         if(strcmp($user1->name, $_POST[signInName]) == 0) {
             $found = true;
         }
@@ -19,5 +21,5 @@
 ?>
 
 <script type="text/javascript">
-    window.location.replace("/CS462/home.php");
+    //window.location.replace("/CS462/home.php");
 </script>
