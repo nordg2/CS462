@@ -6,8 +6,8 @@
         <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
         <script src='bootstrap/js/bootstrap.js'></script>
         <script type='text/javascript'>
-            if(<?php $_POST[code] != null && $_POST[code] != '' ?>) {
-               var code = <?php $_POST[code] ?>; 
+            if(<?php echo $_POST[code] != null && $_POST[code] != '' ;?>) {
+               var code = <?php echo $_POST[code] ?>; 
             
                window.location = 'https://foursquare.com/oauth2/access_token?client_id=TVNJ0HMXZU2MRZB4QBL5SIO14TQVBNZUOZXRCLZNWQ20ESLR&client_secret=YMHA2Y0WXCNU52HL4SY2BZFWRMGWE3EG1ARLPYP1KXCMTC4B&grant_type=authorization_code&redirect_uri=http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php&code=' + code; 
             }
