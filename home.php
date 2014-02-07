@@ -35,6 +35,8 @@
                         echo 'user: '. $user->name.' '.$signedInUser[0];
                         echo $token;
                         $user->token = $token;
+                    } else {
+                        $user->token = '';
                     }
                 }
                 file_put_contents('users.txt', json_encode($users));
