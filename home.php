@@ -18,9 +18,9 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            if($_GET[code] != null && $_GET[code] != ""){
-                $r = new HttpRequest('https://foursquare.com/oauth2/access_token?client_id=TVNJ0HMXZU2MRZB4QBL5SIO14TQVBNZUOZXRCLZNWQ20ESLR&client_secret=YMHA2Y0WXCNU52HL4SY2BZFWRMGWE3EG1ARLPYP1KXCMTC4B&grant_type=authorization_code&redirect_uri=http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php&code='.$_GET[code].'', HttpRequest::METH_GET);
-                echo $r->send()->getBody();
+            echo $_GET[access_token];
+            if($_GET[access_token] != null && $_GET[access_token] != ""){
+                echo 'it worked!';
             }
         ?>
         
@@ -79,7 +79,7 @@
                                echo "This is your page!"; 
                             } else if($_POST[userSelected] == null || strcmp($_POST[userSelected], "*") == 0) {
                                echo"Select a User";
-                               echo "<a href='https://foursquare.com/oauth2/authenticate?client_id=TVNJ0HMXZU2MRZB4QBL5SIO14TQVBNZUOZXRCLZNWQ20ESLR&response_type=code&redirect_uri=http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php'>SignIn with Foursquare</a>";
+                               echo "<a href='https://foursquare.com/oauth2/authenticate?client_id=TVNJ0HMXZU2MRZB4QBL5SIO14TQVBNZUOZXRCLZNWQ20ESLR&response_type=token&redirect_uri=http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php'>SignIn with Foursquare</a>";
                             } else {
                                echo"This is not your page!"; 
                             }
