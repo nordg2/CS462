@@ -12,7 +12,7 @@
 // ???
 DEFINE("HTTP_GET","GET");
 DEFINE("HTTP_POST","POST");
-
+echo 'included';
 /**
  * FoursquareApi
  * Provides a wrapper for making both public and authenticated requests to the
