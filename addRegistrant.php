@@ -17,5 +17,5 @@ file_put_contents('users.txt', json_encode($users));
 ?>
 
 <script type="text/javascript">
-    window.location.replace("http://localhost/CS462/register.php");
+    window.location.replace("/CS462/register.php");
 </script>

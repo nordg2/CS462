@@ -19,5 +19,5 @@
 ?>
 
 <script type="text/javascript">
-    window.location.replace("http://localhost/CS462/home.php");
+    window.location.replace("/CS462/home.php");
 </script>
