@@ -21,7 +21,7 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            echo $_SERVER[REQUEST_URI];
+            echo $_SERVER[PATH_INFO];
             
             
         ?>
