@@ -121,6 +121,15 @@
                                     $resp = $foursquare->GetPublic("users/self/checkins", $params);
                                     echo print_r($resp);
                                     $checkins = json_decode($resp);
+                                    echo '<table>';
+                                        echo '<tr><td>Check-in:</td><td>'.$checkins->items[0]->venue->name.'</td></tr>';
+                                        echo '<tr><td>Location: </td><td>'.$checkins->items[0]->location->address.' '.$checkins->items[0]->location->city.', '.$checkins->items[0]->location->state.'</td></tr>';
+                                        echo '<tr><td></td><td></td></tr>';
+                                        echo '<tr><td></td><td></td></tr>';
+                                        echo '<tr><td></td><td></td></tr>';
+                                        echo '<tr><td></td><td></td></tr>';
+                                        
+                                    echo '</table>';
                                     //echo 'success!';
                                     //echo print_r($checkins->response->checkins);
                                     ?>
