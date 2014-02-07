@@ -21,8 +21,8 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            echo print_r($_POST);
-            echo print_r($_GET);
+            echo print_f($_POST);
+            echo print_f($_GET)
             
             
         ?>
