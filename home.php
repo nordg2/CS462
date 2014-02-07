@@ -117,7 +117,7 @@
                                     $token = $signedInUser[0]->token;
                                     echo "Your auth token: $token";
                                     $params = array("oauth_token"=>$token);
-                                    $checkins = $foursquare->GetPublic("v2/users/self/checkins", $params);
+                                    $checkins = $foursquare->GetPublic("checkins", $params);
                                     echo 'success!';
                                     echo print_r($checkins);
                                     ?>
