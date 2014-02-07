@@ -21,10 +21,7 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            echo print_r($_SESSION);
-            echo print_r($_SERVER);
-            
-            
+            echo print_r($_GET);
         ?>
         
         <div class="navbar">
