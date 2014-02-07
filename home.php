@@ -339,6 +339,7 @@ class FoursquareApi {
 
             // If the link has been clicked, and we have a supplied code, use it to request a token
             if(array_key_exists("code",$_GET)){
+                echo 'fsjklsfjkl';
                 $token = $foursquare->GetToken($_GET[code],$redirect_uri);
             }
         ?>
