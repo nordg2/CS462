@@ -20,7 +20,7 @@
     //echo 'a';
     //$user = array();
     //echo 'b';
-    array_push($user, $_POST[signInName]);
+    //array_push($user, $_POST[signInName]);
     //echo print_r($user);
 
     file_put_contents('userSignedIn.txt', json_encode($user));    
