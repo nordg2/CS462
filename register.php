@@ -29,7 +29,7 @@ and open the template in the editor.
                             }
                         ?>
                         <li><a href="home.php">CS 462</a></li>
-                        <li><a href="signIn.php">Sign-in</a></li>
+                        <li><a href="signin.php">Sign-in</a></li>
                         <li class="active"><a href="#">Register</a></li>
                         <?php
                             if(count($signedInUser) > 0) {
