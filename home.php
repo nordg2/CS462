@@ -25,8 +25,12 @@
 //                    'client_secret' => 'YMHA2Y0WXCNU52HL4SY2BZFWRMGWE3EG1ARLPYP1KXCMTC4B',
 //                    'grant_type' => 'authorization_code',
 //                    'redirect_uri' => 'http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php',
-//                    'code' => ''.$_GET[code].'')); 
-                echo $r->send()->getBody();
+//                    'code' => ''.$_GET[code].''));
+                echo 'here';
+                $response = new HttpMessage($r->send( )) ;
+                echo 'bleh';
+                echo $response->getBody();
+                echo '1';
             }
             
         ?>
