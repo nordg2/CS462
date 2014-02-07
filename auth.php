@@ -302,7 +302,7 @@ class FoursquareApi {
 		$result = $this->GET($this->TokenUrl,$params);
 		$json = json_decode($result);
                 echo 'here';
-                echo $json;
+                echo print_r($json);
 		// Petr Babicka Check if we get token
 		if (property_exists($json, 'access_token')) {
 			$this->SetAccessToken($json->access_token);
