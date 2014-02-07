@@ -119,9 +119,10 @@
                                     $params = array("oauth_token" => $token);
                                     echo print_r($params);
                                     $resp = $foursquare->GetPublic("users/self/checkins", $params);
+                                    echo print_r($resp);
                                     $checkins = json_decode($resp);
-                                    echo 'success!';
-                                    echo print_r($checkins->response->checkins);
+                                    //echo 'success!';
+                                    //echo print_r($checkins->response->checkins);
                                     ?>
                                         
 <p>
