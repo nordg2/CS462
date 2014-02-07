@@ -120,7 +120,7 @@
                                     echo print_r($params);
                                     $checkins = $foursquare->GetPublic("users/self/checkins", $params);
                                     echo 'success!';
-                                    echo print_r($checkins);
+                                    echo print_r($checkins->response->checkins);
                                     ?>
                                         
 <p>
