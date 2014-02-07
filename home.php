@@ -118,7 +118,7 @@
                                     echo "Your auth token: $token";
                                     $params = array("oauth_token"=>$token);
                                     $checkins = $foursquare->GetPublic("checkins", $params);
-                                    echo 'success!';
+                                    //echo 'success!';
                                     echo print_r($checkins);
                                     ?>
                                         
