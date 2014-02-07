@@ -8,6 +8,9 @@
         <script type='text/javascript'>
             function submitForm(){
                document.getElementById("form").submit();
+               if(document.URL.substr(document.URL.indexOf('#') +1, 12) === 'access_token') {
+                   var access_code = document.URL.substr(document.URL.indexOf('=') +1);
+               }
                
             }
         </script>
@@ -18,10 +21,9 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            echo $_REQUEST[access_token];
-            if($_GET[access_token] != null && $_GET[access_token] != ""){
-                echo 'it worked!';
-            }
+            echo $_SERVER[REQUEST_URI];
+            
+            
         ?>
         
         <div class="navbar">
