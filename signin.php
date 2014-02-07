@@ -26,7 +26,7 @@ and open the template in the editor.
                             echo 'good';
                             if(count($signedInUser) > 0){
                                 echo 'good';
-                                echo '<li><a href="#" />Welcome !</a></li>';
+                                echo '<li><a href="#" />Welcome'.$signedInUser[0]->name.' !</a></li>';
                                 echo 'still good';
                             }else{
                                 echo '<li><a href="#" /></a></li>';

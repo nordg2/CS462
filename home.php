@@ -101,14 +101,17 @@
                     <td>
                         <?php
                             if(strcmp($signedInUser[0]->name, $_POST[userSelected]) == 0 && count($signedInUser) > 0) {
-                               echo "This is your page!";
-                               
-                               if(!isset($token)){ 
+                               //echo "This is your page!";
+                               if($signedInUser[0]->token == '' && !isset($token)){
+                                  
                                     echo "<a href='".$foursquare->AuthenticationLink($redirect_uri)."'>Connect to this app via Foursquare</a>";
                                 // Otherwise display the token
-                                } else {
+                                } else if($signedInUser[0]->token != '') {
+                                    $token = $signedInUser[0]->token;
                                     echo "Your auth token: $token";
-                                }
+                                } 
+                               
+                               
                                
                             } else if($_POST[userSelected] == null || strcmp($_POST[userSelected], "*") == 0) {
                                echo"Select a User";
