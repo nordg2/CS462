@@ -126,10 +126,10 @@
                                     }
                                     echo '<table>';
                                         echo '<tr><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
-                                        echo '<tr><td>Location: </td><td>'.$checkin->location->address.' '.$checkin->location->city.', '.$checkin->location->state.'</td></tr>';
-                                        echo '<tr><td></td><td></td></tr>';
-                                        echo '<tr><td></td><td></td></tr>';
-                                        echo '<tr><td></td><td></td></tr>';
+                                        echo '<tr><td>Location:</td><td>'.$checkin->venue->location->address.' '.$checkin->venue->location->city.', '.$checkin->venue->location->state.'</td></tr>';
+                                        echo '<tr><td>Phone:</td><td>'.$checkin->venue->contact->formattedPhone.'</td></tr>';
+                                        echo '<tr><td>Comment</td><td>'.$checkin->shout.'</td></tr>';
+                                        echo '<tr><td>Been Here:</td><td>'.$checkin->venue->beenHere->count.'</td></tr>';
                                         echo '<tr><td></td><td></td></tr>';
                                         
                                     echo '</table>';
