@@ -7,7 +7,8 @@
         <script src='bootstrap/js/bootstrap.js'></script>
         <script type='text/javascript'>
             function submitForm(){
-               document.getElementById("form").submit(); 
+               document.getElementById("form").submit();
+               
             }
         </script>
         <title>Lab 1</title>
@@ -17,7 +18,7 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            echo $_POST[code];
+            echo $_GET[code];
         ?>
         
         <div class="navbar">
