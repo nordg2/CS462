@@ -32,7 +32,7 @@
 		$token = $foursquare->GetToken($_GET['code'],$redirect_uri);
                 foreach($users as $user) {
                     if(count($signedInUser) > 0 && strcmp($user->name, $signedInUser[0]) == 0) {
-                        echo 'user: '. $user->name.' '.$signedInUser[0];
+                        //echo 'user: '. $user->name.' '.$signedInUser[0];
                         $user->token = $token;
                     }
                 }

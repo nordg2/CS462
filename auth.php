@@ -299,11 +299,11 @@ class FoursquareApi {
 						"grant_type"=>"authorization_code",
 						"redirect_uri"=>$redirect,
 						"code"=>$code);
-                echo print_r($params);
+                //echo print_r($params);
 		$result = $this->GET($this->TokenUrl,$params);
 		$json = json_decode($result);
-                echo 'here';
-                echo print_r($json);
+                //echo 'here';
+                //echo print_r($json);
 		// Petr Babicka Check if we get token
 		if (property_exists($json, 'access_token')) {
 			$this->SetAccessToken($json->access_token);
