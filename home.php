@@ -341,6 +341,7 @@ class FoursquareApi {
             if(array_key_exists("code",$_GET)){
                 echo 'fsjklsfjkl';
                 $token = $foursquare->GetToken($_GET[code],$redirect_uri);
+                echo $token;
             }
         ?>
         
