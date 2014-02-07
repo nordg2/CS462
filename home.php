@@ -116,11 +116,11 @@
                                 } else if($signedInUser[0]->token != '') {
                                     $token = $signedInUser[0]->token;
                                     echo "Your auth token: $token";
-                                    $params = array("oauth_token" => $token);
-                                    echo print_r($params);
-                                    $checkins = $foursquare->GetPublic("checkins", $params);
+                                    //$params = array("oauth_token" => $token);
+                                    //echo print_r($params);
+                                    //$checkins = $foursquare->GetPrivate("checkins", $params);
                                     //echo 'success!';
-                                    echo print_r($checkins);
+                                    //echo print_r($checkins);
                                     ?>
                                         
 <p>
@@ -134,10 +134,10 @@
 
 
 	// Prepare parameters
-	$params = array("ll"=>"$lat,$lng");
+	$params = array("ll"=>"$lat,$lng", "oauth_token" => $token);
 
 	// Perform a request to a public resource
-	$response = $foursquare->GetPublic("venues/search",$params);
+	$response = $foursquare->GetPrivate("venues/search",$params);
 	$venues = json_decode($response);
 ?>
 	
