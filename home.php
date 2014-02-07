@@ -116,7 +116,8 @@
                                 } else if($signedInUser[0]->token != '') {
                                     $token = $signedInUser[0]->token;
                                     echo "Your auth token: $token";
-                                    $params = array("oauth_token"=>$token);
+                                    $params = array("oauth_token" => $token);
+                                    echo print_r($params);
                                     $checkins = $foursquare->GetPublic("checkins", $params);
                                     //echo 'success!';
                                     echo print_r($checkins);
