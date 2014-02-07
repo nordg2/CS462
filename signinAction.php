@@ -5,7 +5,8 @@
     $found = false;
     echo print_r($users);
     foreach($users as $user1) {
-        
+        echo 'user';
+        echo $user1->name;
         if(strcmp($user1->name, $_POST[signInName]) == 0) {
             $found = true;
             echo '$found';
