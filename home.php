@@ -31,17 +31,17 @@
 	if(array_key_exists("code",$_GET)){
 		$token = $foursquare->GetToken($_GET['code'],$redirect_uri);
                 foreach($users as $user) {
-                    if(count($signedInUser) > 0 && strcmp($user->name, $signedInUser[0]) == 0) {
-                        echo 'user: '. $user->name.' '.$signedInUser[0];
-                        echo $token;
+                    if(count($signedInUser) > 0 && strcmp($user->name, $signedInUser[0]->name) == 0) {
+                        //echo 'user: '. $user->name.' '.$signedInUser[0]->name;
+                        //echo $token;
                         $user->token = $token;
-                    } else {
-                        $user->token = '';
                     }
                 }
                 file_put_contents('users.txt', json_encode($users));
                     
 	}
+        $users = json_decode($string);
+        
 
         //$location = array_key_exists("location",$_GET) ? $_GET['location'] : "Montreal, QC";
             
@@ -57,7 +57,7 @@
                         <?php 
                             
                             if(count($signedInUser) > 0) {
-                                echo '<li><a href="#" />Welcome '.$signedInUser[0].'!</a></li>';
+                                echo '<li><a href="#" />Welcome '.$signedInUser[0]->name.'!</a></li>';
                             } else {
                                 echo '<li><a href="#" /></a></li>';
                             }
@@ -100,14 +100,15 @@
                 <tr>
                     <td>
                         <?php
-                            if(strcmp($signedInUser[0], $_POST[userSelected]) == 0 && count($signedInUser) > 0) {
+                            if(strcmp($signedInUser[0]->name, $_POST[userSelected]) == 0 && count($signedInUser) > 0) {
                                echo "This is your page!";
+                               
                                if(!isset($token)){ 
-		echo "<a href='".$foursquare->AuthenticationLink($redirect_uri)."'>Connect to this app via Foursquare</a>";
-	// Otherwise display the token
-	}else{
-		echo "Your auth token: $token";
-	}
+                                    echo "<a href='".$foursquare->AuthenticationLink($redirect_uri)."'>Connect to this app via Foursquare</a>";
+                                // Otherwise display the token
+                                } else {
+                                    echo "Your auth token: $token";
+                                }
                                
                             } else if($_POST[userSelected] == null || strcmp($_POST[userSelected], "*") == 0) {
                                echo"Select a User";

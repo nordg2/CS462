@@ -9,6 +9,7 @@ foreach($users as $user) {
 }
 $blah = new stdClass();
 $blah->name = "$_POST[registerName]";
+$blah->token = '';
 array_push($users, $blah);
 print_r($users);
 

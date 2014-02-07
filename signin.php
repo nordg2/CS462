@@ -22,8 +22,8 @@ and open the template in the editor.
                         <?php 
                             $json = file_get_contents('userSignedIn.txt');
                             $signedInUser = json_decode($json);
-                            if(count($signedInUser) > 0){
-                                echo '<li><a href="#" />Welcome '.$signedInUser[0].'!</a></li>';
+                            if(count($signedInUser) > 0) {
+                                echo '<li><a href="#" />Welcome '.$signedInUser[0]->name.'!</a></li>';
                             }else{
                                 echo '<li><a href="#" /></a></li>';
                             }
