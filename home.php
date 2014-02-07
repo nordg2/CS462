@@ -33,6 +33,7 @@
                 foreach($users as $user) {
                     if(count($signedInUser) > 0 && strcmp($user->name, $signedInUser[0]) == 0) {
                         echo 'user: '. $user->name.' '.$signedInUser[0];
+                        echo $token;
                         $user->token = $token;
                     }
                 }
