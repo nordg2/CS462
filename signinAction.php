@@ -8,12 +8,15 @@
         
         if(strcmp($user1->name, $_POST[signInName]) == 0) {
             $found = true;
+            echo '$found';
         }
     }
     if(!$found) {
         die('Error: you must have an account to sign-in');
     }
+    echo 'a';
     $user = array();
+    echo 'b';
     array_push($user, $_POST[signInName]);
     echo print_r($user);
 
