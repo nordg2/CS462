@@ -25,9 +25,7 @@
 
 
 	$foursquare = new FoursquareAPI($client_key,$client_secret);
-        echo 'here';
 	if(array_key_exists("code",$_GET)){
-            echo 'yay';
 		$token = $foursquare->GetToken($_GET['code'],$redirect_uri);
                 echo 'token: '. $token;
 	}

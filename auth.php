@@ -165,11 +165,9 @@ class FoursquareApi {
 
 		// borrowed from Andy Langton: http://andylangton.co.uk/
 		$ch = curl_init();
-                echo 'a';
+                
 		curl_setopt($ch, CURLOPT_URL,$url);
-                echo 'b';
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-                echo 'c';
 		if ( isset($_SERVER[HTTP_USER_AGENT]) ) {
 			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER[HTTP_USER_AGENT] );
 		} else {
@@ -301,11 +299,8 @@ class FoursquareApi {
 						"grant_type"=>"authorization_code",
 						"redirect_uri"=>$redirect,
 						"code"=>$code);
-                echo print_r($params);
 		$result = $this->GET($this->TokenUrl,$params);
-                echo 'result';
 		$json = json_decode($result);
-		echo 'json';
 		// Petr Babicka Check if we get token
 		if (property_exists($json, 'access_token')) {
 			$this->SetAccessToken($json->access_token);
