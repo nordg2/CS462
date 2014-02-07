@@ -28,6 +28,7 @@
         $json = file_get_contents('userSignedIn.txt');
         $signedInUser = json_decode($json);
 	$foursquare = new FoursquareAPI($client_key,$client_secret);
+        $location = array_key_exists("location",$_GET) ? $_GET['location'] : "Montreal, QC";
 	if(array_key_exists("code",$_GET)){
 		$token = $foursquare->GetToken($_GET['code'],$redirect_uri);
                 foreach($users as $user) {
@@ -109,6 +110,69 @@
                                 } else if($signedInUser[0]->token != '') {
                                     $token = $signedInUser[0]->token;
                                     echo "Your auth token: $token";
+                                    ?>
+                                        <h1>Basic Request Example</h1>
+<p>
+	Search for venues near...
+	<form action="" method="GET">
+		<input type="text" name="location" />
+		<input type="submit" value="Search!" />
+	</form>
+<p>Searching for venues near <?php echo $location; ?></p>
+<hr />
+<?php 
+
+
+	// Generate a latitude/longitude pair using Google Maps API
+	list($lat,$lng) = $foursquare->GeoLocate($location);
+
+
+	// Prepare parameters
+	$params = array("ll"=>"$lat,$lng");
+
+	// Perform a request to a public resource
+	$response = $foursquare->GetPublic("venues/search",$params);
+	$venues = json_decode($response);
+?>
+	
+		<?php foreach($venues->response->venues as $venue): ?>
+			<div class="venue">
+				<?php 
+
+
+					if(isset($venue->categories['0']))
+					{
+						echo '<image class="icon" src="'.$venue->categories['0']->icon->prefix.'88.png"/>';
+					}
+					else
+						echo '<image class="icon" src="https://foursquare.com/img/categories/building/default_88.png"/>';
+					echo '<a href="https://foursquare.com/v/'.$venue->id.'" target="_blank"/><b>';
+					echo $venue->name;
+					echo "</b></a><br/>";
+
+
+
+                    if(isset($venue->categories['0']))
+                    {
+						if(property_exists($venue->categories['0'],"name"))
+						{
+							echo ' <i> '.$venue->categories['0']->name.'</i><br/>';
+						}
+					}
+
+					if(property_exists($venue->hereNow,"count"))
+					{
+							echo ''.$venue->hereNow->count ." people currently here <br/> ";
+					}
+
+                    echo '<b><i>History</i></b> :'.$venue->stats->usersCount." visitors , ".$venue->stats->checkinsCount." visits ";
+
+				?>
+			
+			</div>
+			
+		<?php endforeach; ?>
+	<?php
                                 } 
                                
                                

@@ -21,13 +21,13 @@ and open the template in the editor.
                     <ul class="nav">
                         <?php 
                             $json = file_get_contents('userSignedIn.txt');
-                            echo 'good';
+                            //echo 'good';
                             $signedInUser = json_decode($json);
-                            echo 'good';
+                            //echo 'good';
                             if(count($signedInUser) > 0){
-                                echo 'good';
-                                echo '<li><a href="#" />Welcome '.$signedInUser[0]->name.' !</a></li>';
-                                echo 'still good';
+                                //echo 'good';
+                                echo '<li><a href="#" />Welcome '.$signedInUser[0]->name.'!</a></li>';
+                                //echo 'still good';
                             }else{
                                 echo '<li><a href="#" /></a></li>';
                             }
