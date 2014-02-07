@@ -18,7 +18,7 @@
         <?php
             $string = file_get_contents('users.txt');
             $users = json_decode($string);
-            echo $_POST[access_token];
+            echo $_REQUEST[access_token];
             if($_GET[access_token] != null && $_GET[access_token] != ""){
                 echo 'it worked!';
             }
