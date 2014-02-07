@@ -101,7 +101,13 @@
                 <tr>
                     <td>
                         <?php
-                            if(strcmp($signedInUser[0]->name, $_POST[userSelected]) == 0 && count($signedInUser) > 0) {
+                            $selectedUser;
+                            foreach($users as $u) {
+                                if(strcmp($u->name,$_POST[userSelected]) == 0){
+                                    $selectedUser = $u;
+                                }
+                            }
+                            if(strcmp($signedInUser[0]->name, $selectedUser->name) == 0 && count($signedInUser) > 0) {
                                //echo "This is your page!";
                                if($signedInUser[0]->token == '' && !isset($token)){
                                   
@@ -110,14 +116,13 @@
                                 } else if($signedInUser[0]->token != '') {
                                     $token = $signedInUser[0]->token;
                                     echo "Your auth token: $token";
+                                    $params = array("oauth_token"=>$token);
+                                    $checkins = $foursquare->GetPublic("v2/users/self/checkins", $params);
+                                    echo 'success!';
+                                    echo print_r($checkins);
                                     ?>
-                                        <h1>Basic Request Example</h1>
+                                        
 <p>
-	Search for venues near...
-	<form action="" method="GET">
-		<input type="text" name="location" />
-		<input type="submit" value="Search!" />
-	</form>
 <p>Searching for venues near <?php echo $location; ?></p>
 <hr />
 <?php 
