@@ -289,26 +289,32 @@ class FoursquareApi {
 	 * @param $code The 'code' parameter provided by the Foursquare webauth callback redirect
 	 * @param $redirect The configured redirect_uri for the provided client credentials
 	 */
-	public function GetToken($code,$redirect=''){
+	public function GetToken($code,$redirect='') {
 		if ( 0 === strlen( $redirect ) ) {
 			// If we have to use the same URI to request a token as we did for 
 			// the authorization link, why are we not storing it internally?
 			$redirect = $this->RedirectUri;
 		}
+                echo '1';
 		$params = array("client_id"=>$this->ClientID,
 						"client_secret"=>$this->ClientSecret,
 						"grant_type"=>"authorization_code",
 						"redirect_uri"=>$redirect,
 						"code"=>$code);
+                echo '2';
 		$result = $this->GET($this->TokenUrl,$params);
+                echo '3';
 		$json = json_decode($result);
-		
+		echo '4';
 		// Petr Babicka Check if we get token
 		if (property_exists($json, 'access_token')) {
+                    echo '5';
 			$this->SetAccessToken($json->access_token);
+                        echo '6';
 			return $json->access_token;
 		}
 		else {
+                    echo '7';
 			return 0;
 		}
 	}
