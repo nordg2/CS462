@@ -63,7 +63,7 @@
                             }
                         ?>
                         <li class="active"><a href="#">CS 462</a></li>
-                        <li><a href="signin.php">Sign-in</a></li>
+                        <li><a href="sign.php">Sign-in</a></li>
                         <li><a href="register.php">Register</a></li>
                         <?php
                             if(count($signedInUser) > 0) {
