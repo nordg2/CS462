@@ -122,17 +122,15 @@
                                     echo print_r($resp);
                                     $checkins = json_decode($resp);
                                     foreach ($checkins->response->checkins->items as $checkin){
-                                        
-                                    }
-                                    echo '<table>';
+                                        echo '<table>';
                                         echo '<tr><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
                                         echo '<tr><td>Location:</td><td>'.$checkin->venue->location->address.' '.$checkin->venue->location->city.', '.$checkin->venue->location->state.'</td></tr>';
                                         echo '<tr><td>Phone:</td><td>'.$checkin->venue->contact->formattedPhone.'</td></tr>';
                                         echo '<tr><td>Comment</td><td>'.$checkin->shout.'</td></tr>';
                                         echo '<tr><td>Been Here:</td><td>'.$checkin->venue->beenHere->count.'</td></tr>';
-                                        echo '<tr><td></td><td></td></tr>';
-                                        
-                                    echo '</table>';
+                                        echo '</table>';
+                                    }
+                                    
                                     //echo 'success!';
                                     //echo print_r($checkins->response->checkins);
                                     ?>
@@ -200,6 +198,21 @@
                             } else if($_POST[userSelected] == null || strcmp($_POST[userSelected], "*") == 0) {
                                echo"Select a User";
                             } else {
+                                $token = $selectedUser->token;
+                                $params = array("oauth_token" => $token);
+                                    echo print_r($params);
+                                    $resp = $foursquare->GetPublic("users/self/checkins", $params);
+                                    echo print_r($resp);
+                                    $checkins = json_decode($resp);
+                                    $checkin = $checkins->response->checkins->items[0]; 
+                                        echo '<table>';
+                                        echo '<tr><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
+                                        echo '<tr><td>Location:</td><td>'.$checkin->venue->location->address.' '.$checkin->venue->location->city.', '.$checkin->venue->location->state.'</td></tr>';
+                                        echo '<tr><td>Phone:</td><td>'.$checkin->venue->contact->formattedPhone.'</td></tr>';
+                                        echo '<tr><td>Comment</td><td>'.$checkin->shout.'</td></tr>';
+                                        echo '<tr><td>Been Here:</td><td>'.$checkin->venue->beenHere->count.'</td></tr>';
+                                        echo '</table>';
+                                    
                                echo"This is not your page!"; 
                             }
                         ?>
