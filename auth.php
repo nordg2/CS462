@@ -162,18 +162,21 @@ class FoursquareApi {
 		
 		// Populate data for the GET request
 		if($type == HTTP_GET) $url = $this->MakeUrl($url,$params);
-echo 'a';
+
 		// borrowed from Andy Langton: http://andylangton.co.uk/
 		$ch = curl_init();
+                echo 'a';
 		curl_setopt($ch, CURLOPT_URL,$url);
+                echo 'b';
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+                echo 'c';
 		if ( isset($_SERVER[HTTP_USER_AGENT]) ) {
 			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER[HTTP_USER_AGENT] );
 		} else {
 			// Handle the useragent like we are Google Chrome
 			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.X.Y.Z Safari/525.13.');
 		}
-                echo 'b';
+                
 		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$acceptLanguage[] = "Accept-Language:" . $this->ClientLanguage;
@@ -185,7 +188,7 @@ echo 'a';
 		}
 
 		$result=curl_exec($ch);
-                echo 'c';
+                
 		$info=curl_getinfo($ch);
 		curl_close($ch);
 		
