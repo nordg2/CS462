@@ -23,17 +23,25 @@
         $redirect_uri = "http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php";	
 // Load the Foursquare API library
 
-
+        $string = file_get_contents('users.txt');
+        $users = json_decode($string);
+        $json = file_get_contents('userSignedIn.txt');
+        $signedInUser = json_decode($json);
 	$foursquare = new FoursquareAPI($client_key,$client_secret);
 	if(array_key_exists("code",$_GET)){
 		$token = $foursquare->GetToken($_GET['code'],$redirect_uri);
-                echo 'token: '. $token;
+                foreach($users as $user) {
+                    if(strcmp($user->name, $signedInUser) == 0) {
+                        $user->token = $token;
+                    }
+                }
+                file_put_contents('users.txt', json_encode($users));
+                    
 	}
 
         //$location = array_key_exists("location",$_GET) ? $_GET['location'] : "Montreal, QC";
             
-        $string = file_get_contents('users.txt');
-            $users = json_decode($string);
+        
             
             ?>
         
@@ -43,8 +51,7 @@
                 <div class="container">
                     <ul class="nav">
                         <?php 
-                            $json = file_get_contents('userSignedIn.txt');
-                            $signedInUser = json_decode($json);
+                            
                             if(count($signedInUser) > 0) {
                                 echo '<li><a href="#" />Welcome '.$signedInUser[0].'!</a></li>';
                             } else {
