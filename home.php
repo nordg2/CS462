@@ -31,8 +31,8 @@
 	if(array_key_exists("code",$_GET)){
 		$token = $foursquare->GetToken($_GET['code'],$redirect_uri);
                 foreach($users as $user) {
-                    if(strcmp($user->name, $signedInUser) == 0) {
-                        echo 'user: '. $user->name.' '.$signedInUser;
+                    if(count($signedInUser) > 0 && strcmp($user->name, $signedInUser[0]) == 0) {
+                        echo 'user: '. $user->name.' '.$signedInUser[0];
                         $user->token = $token;
                     }
                 }
