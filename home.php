@@ -17,7 +17,22 @@
     <body>
         <?php
         require_once 'auth.php';
-            $string = file_get_contents('users.txt');
+        // Set your client key and secret
+	$client_key = "TVNJ0HMXZU2MRZB4QBL5SIO14TQVBNZUOZXRCLZNWQ20ESLR";
+	$client_secret = "YMHA2Y0WXCNU52HL4SY2BZFWRMGWE3EG1ARLPYP1KXCMTC4B";
+        $redirect_uri = "http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php";	
+// Load the Foursquare API library
+
+
+	$foursquare = new FoursquareAPI($client_key,$client_secret);
+	if(array_key_exists("code",$_GET)){
+		$token = $foursquare->GetToken($_GET[code],$redirect_uri);
+                echo 'token: '. $token;
+	}
+
+        //$location = array_key_exists("location",$_GET) ? $_GET['location'] : "Montreal, QC";
+            
+        $string = file_get_contents('users.txt');
             $users = json_decode($string);
             
             ?>
@@ -76,7 +91,12 @@
                         <?php
                             if(strcmp($signedInUser[0], $_POST[userSelected]) == 0 && count($signedInUser) > 0) {
                                echo "This is your page!";
-                               echo "<a href='https://foursquare.com/oauth2/authenticate?client_id=TVNJ0HMXZU2MRZB4QBL5SIO14TQVBNZUOZXRCLZNWQ20ESLR&response_type=code&redirect_uri=http://ec2-54-197-123-215.compute-1.amazonaws.com/CS462/home.php'>SignIn with Foursquare</a>";
+                               if(!isset($token)){ 
+		echo "<a href='".$foursquare->AuthenticationLink($redirect_uri)."'>Connect to this app via Foursquare</a>";
+	// Otherwise display the token
+	}else{
+		echo "Your auth token: $token";
+	}
                                
                             } else if($_POST[userSelected] == null || strcmp($_POST[userSelected], "*") == 0) {
                                echo"Select a User";
