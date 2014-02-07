@@ -199,6 +199,7 @@ class FoursquareApi {
 	 * Abstraction of the GET request
 	 */
 	private function GET($url,$params=false){
+                echo 'hmm';
 		return $this->Request($url,$params,HTTP_GET);
 	}
 
