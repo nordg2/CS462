@@ -38,7 +38,7 @@
                         echo 'a';
                         $user->token = $token;
                         echo 'b';
-                        file_put_contents('userSignedIn.txt', array($user));
+                        file_put_contents('userSignedIn.txt', json_encode(array($user)));
                         echo 'c';
                         $json = file_get_contents('userSignedIn.txt');
                         echo 'd';
