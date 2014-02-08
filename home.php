@@ -115,15 +115,15 @@
                                 // Otherwise display the token
                                 } else if($signedInUser[0]->token != '') {
                                     $token = $signedInUser[0]->token;
-                                    echo "Your auth token: $token";
+                                    //echo "Your auth token: $token";
                                     $params = array("oauth_token" => $token);
-                                    echo print_r($params);
+                                    //echo print_r($params);
                                     $resp = $foursquare->GetPublic("users/self/checkins", $params);
-                                    echo print_r($resp);
+                                    //echo print_r($resp);
                                     $checkins = json_decode($resp);
                                     foreach ($checkins->response->checkins->items as $checkin){
-                                        echo '<table>';
-                                        echo '<tr><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
+                                        echo '<table style="padding-bottom:2cm;">';
+                                        echo '<tr class="bg-info"><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
                                         echo '<tr><td>Location:</td><td>'.$checkin->venue->location->address.' '.$checkin->venue->location->city.', '.$checkin->venue->location->state.'</td></tr>';
                                         echo '<tr><td>Phone:</td><td>'.$checkin->venue->contact->formattedPhone.'</td></tr>';
                                         echo '<tr><td>Comment</td><td>'.$checkin->shout.'</td></tr>';
@@ -200,20 +200,20 @@
                             } else {
                                 $token = $selectedUser->token;
                                 $params = array("oauth_token" => $token);
-                                    echo print_r($params);
+                                    //echo print_r($params);
                                     $resp = $foursquare->GetPublic("users/self/checkins", $params);
-                                    echo print_r($resp);
+                                    //echo print_r($resp);
                                     $checkins = json_decode($resp);
                                     $checkin = $checkins->response->checkins->items[0]; 
-                                        echo '<table>';
-                                        echo '<tr><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
+                                        echo '<table style="padding-bottom:2cm;">';
+                                        echo '<tr class="bg-info"><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
                                         echo '<tr><td>Location:</td><td>'.$checkin->venue->location->address.' '.$checkin->venue->location->city.', '.$checkin->venue->location->state.'</td></tr>';
                                         echo '<tr><td>Phone:</td><td>'.$checkin->venue->contact->formattedPhone.'</td></tr>';
                                         echo '<tr><td>Comment</td><td>'.$checkin->shout.'</td></tr>';
                                         echo '<tr><td>Been Here:</td><td>'.$checkin->venue->beenHere->count.'</td></tr>';
                                         echo '</table>';
                                     
-                               echo"This is not your page!"; 
+                               //echo"This is not your page!"; 
                             }
                         ?>
                     </td>
