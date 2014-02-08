@@ -30,13 +30,13 @@
 	$foursquare = new FoursquareAPI($client_key,$client_secret);
         $location = array_key_exists("location",$_GET) ? $_GET['location'] : "Montreal, QC";
 	if(array_key_exists("code",$_GET)){
-		$token = $foursquare->GetToken($_GET['code'],$redirect_uri);
+                $token = $foursquare->GetToken($_GET['code'],$redirect_uri);
                 foreach($users as $user) {
                     if(count($signedInUser) > 0 && strcmp($user->name, $signedInUser[0]->name) == 0) {
                         //echo 'user: '. $user->name.' '.$signedInUser[0]->name;
                         //echo $token;
                         $user->token = $token;
-                        $signedInUser[0]->token = $token;
+                        file_put_contents('userSignedIn.txt', array($user));
                     }
                 }
                 file_put_contents('users.txt', json_encode($users));
