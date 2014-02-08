@@ -35,8 +35,15 @@
                     if(count($signedInUser) > 0 && strcmp($user->name, $signedInUser[0]->name) == 0) {
                         //echo 'user: '. $user->name.' '.$signedInUser[0]->name;
                         //echo $token;
+                        echo 'a';
                         $user->token = $token;
+                        echo 'b';
                         file_put_contents('userSignedIn.txt', array($user));
+                        echo 'c';
+                        $json = file_get_contents('userSignedIn.txt');
+                        echo 'd';
+                        $signedInUser = json_decode($json);
+                        echo 'e';
                     }
                 }
                 file_put_contents('users.txt', json_encode($users));
