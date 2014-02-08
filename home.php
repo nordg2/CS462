@@ -123,7 +123,7 @@
                                     $checkins = json_decode($resp);
                                     foreach ($checkins->response->checkins->items as $checkin){
                                         echo '<table style="padding-bottom:2cm;">';
-                                        echo '<tr class="bg-info"><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
+                                        echo '<tr class="info"><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
                                         echo '<tr><td>Location:</td><td>'.$checkin->venue->location->address.' '.$checkin->venue->location->city.', '.$checkin->venue->location->state.'</td></tr>';
                                         echo '<tr><td>Phone:</td><td>'.$checkin->venue->contact->formattedPhone.'</td></tr>';
                                         echo '<tr><td>Comment</td><td>'.$checkin->shout.'</td></tr>';
@@ -206,7 +206,7 @@
                                     $checkins = json_decode($resp);
                                     $checkin = $checkins->response->checkins->items[0]; 
                                         echo '<table style="padding-bottom:2cm;">';
-                                        echo '<tr class="bg-info"><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
+                                        echo '<tr class="info"><td>Check-in:</td><td>'.$checkin->venue->name.'</td></tr>';
                                         echo '<tr><td>Location:</td><td>'.$checkin->venue->location->address.' '.$checkin->venue->location->city.', '.$checkin->venue->location->state.'</td></tr>';
                                         echo '<tr><td>Phone:</td><td>'.$checkin->venue->contact->formattedPhone.'</td></tr>';
                                         echo '<tr><td>Comment</td><td>'.$checkin->shout.'</td></tr>';
