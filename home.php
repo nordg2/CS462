@@ -36,9 +36,7 @@
                         //echo 'user: '. $user->name.' '.$signedInUser[0]->name;
                         //echo $token;
                         $user->token = $token;
-                        file_put_contents('userSignedIn.txt', array($user));
-                        $json = file_get_contents('userSignedIn.txt');
-                        $signedInUser = json_decode($json);
+                        $signedInUser->token = $token;
                     }
                 }
                 file_put_contents('users.txt', json_encode($users));
