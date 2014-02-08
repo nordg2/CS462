@@ -36,6 +36,9 @@
                         //echo 'user: '. $user->name.' '.$signedInUser[0]->name;
                         //echo $token;
                         $user->token = $token;
+                        file_put_contents('userSignedIn.txt', array($user));
+                        $json = file_get_contents('userSignedIn.txt');
+                        $signedInUser = json_decode($json);
                     }
                 }
                 file_put_contents('users.txt', json_encode($users));
@@ -199,6 +202,7 @@
                                echo"Select a User";
                             } else {
                                 $token = $selectedUser->token;
+                                echo "token".$token;
                                 $params = array("oauth_token" => $token);
                                     //echo print_r($params);
                                     $resp = $foursquare->GetPublic("users/self/checkins", $params);
